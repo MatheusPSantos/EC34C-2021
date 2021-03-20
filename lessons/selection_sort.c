@@ -1,27 +1,24 @@
 /**
- * 🇺🇸 Algorithm to make sort of an array by insertion method
- * 🇧🇷 Algoritmo de ordenação utilizando método de inserção
+ * 🇺🇸 Algorithm to make sort of an array by selection method
+ * 🇧🇷 Algoritmo de ordenação utilizando método de seleção
  **/
-
 #include <stdio.h>
 #include <stdlib.h>
 
-void insertionSort(int *Arr, int nElements)
+void selectionSort(int *Arr, int nElements)
 {
-  int i, key;
 
-  for (int j = 1; j < nElements; j++)
+  for (int j = 0; j < nElements - 1; j++)
   {
-    key = Arr[j];
-    i = j - 1;
-
-    while (i >= 0 && Arr[i] >= key)
+    int m = j;
+    for (int i = j + 1; i < nElements; i++)
     {
-      Arr[i + 1] = Arr[i];
-      i = i - 1;
+      if (Arr[i] < Arr[m])
+        m = i;
     }
-
-    Arr[i + 1] = key;
+    int temp = Arr[j];
+    Arr[j] = Arr[m];
+    Arr[m] = temp;
   }
 }
 
@@ -33,7 +30,7 @@ int main(int argc, char *argv[])
   {
     Arr[i] = 10 - i;
   }
-  printf("INSERTION SORT METHOD | METODO DE ODENAR POR INSERCAO\n");
+  printf("SELECTIO SORT METHOD | METODO DE ORDENAR POR SELECAO\n");
   printf("BEFORE - ANTES >>>\n");
   printf("[");
   for (i = 0; i < 10; i++)
@@ -42,7 +39,7 @@ int main(int argc, char *argv[])
   }
   printf("]\n");
 
-  insertionSort(Arr, 10);
+  selectionSort(Arr, 10);
 
   printf("\nAFTER - DEPOIS >>>\n");
   printf("[");
