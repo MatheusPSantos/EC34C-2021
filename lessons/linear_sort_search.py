@@ -19,7 +19,7 @@ def main():
     elem = int(input(f"Element to search >>> "))
 
     position = linear_sort_search(sorted_arr, elem)
-    if position > 0:
+    if position >= 0:
         print(f">>> {elem} has in position {position} in the list.")
         return
 
